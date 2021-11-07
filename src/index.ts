@@ -7,10 +7,13 @@ import * as passport from "passport";
 import * as hpp from "hpp";
 import * as helmet from "helmet";
 import env from "./config";
+import passportConfig from "./config/passport";
 import { sequelize } from "./model";
 
 const app = express();
+
 const prod: boolean = process.env.NODE_ENV === "production";
+passportConfig();
 sequelize
     .sync({
         force: false,
